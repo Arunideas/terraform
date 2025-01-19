@@ -62,6 +62,3 @@ resource "aws_codepipeline" "codepipeline" {
   }
 }
 
-output "pipeline_name" {
-  value = aws_codepipeline.codepipeline.name
-}
