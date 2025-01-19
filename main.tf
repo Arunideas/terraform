@@ -4,7 +4,7 @@ provider "aws" {
 
 module "s3" {
   source      = "./modules/s3"
-bucket_name = "codepipeline"
+bucket_name = var.s3_bucket_name
 }
 
 module "iam" {
@@ -24,7 +24,7 @@ module "codepipeline" {
   source                = "./modules/codepipeline"
   pipeline_role_arn     = module.iam.codepipeline_role_arn
   artifact_bucket_name  = module.s3.bucket_name
-  source_repo_name      = "kube"
-  source_branch         = "master"
+  source_repo_name      = var.source_repo_name
+  source_branch         = var.source_branch
   codebuild_project_name = module.codebuild.project_name
 }
