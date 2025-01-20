@@ -14,7 +14,7 @@ terraform {
   backend "s3" {
     bucket         = "codepipeline-ap-south-1-744170027108"   # Replace with your S3 bucket name
     key            = "terraform/state/terraform.tfstate" # Path inside the bucket
-    region         = "us-east-1"                  # Replace with your AWS region
+    #region         = "us-east-1"                  # Replace with your AWS region
     dynamodb_table = "terraform-lock-table"       # Optional: DynamoDB table for state locking
   }
 }
