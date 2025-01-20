@@ -23,12 +23,12 @@ module "iam" {
   s3_bucket_name        = module.s3.bucket_name
 }
 
-#module "codebuild" {
-#  source                = "./modules/codebuild"
-#  build_role_arn        = module.iam.codebuild_role_arn
-#  artifact_bucket_name  = module.s3.bucket_name
-#  buildspec             = file("buildspec.yml") # Path to the buildspec file
-#}
+module "codebuild" {
+  source                = "./modules/codebuild"
+  build_role_arn        = module.iam.codebuild_role_arn
+  artifact_bucket_name  = module.s3.bucket_name
+  buildspec             = file("buildspec.yml") # Path to the buildspec file
+}
 
 module "codepipeline" {
   source                = "./modules/codepipeline"
