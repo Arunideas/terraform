@@ -1,14 +1,16 @@
 provider "aws" {
   region = "ap-south-1"
-}
 
-  default_tags {
+    default_tags {
     tags = {
       Environment = "Testing"
       Owner       = "arun"
       Project     = "terraform"
     }
   }
+}
+
+
 
 module "s3" {
   source      = "./modules/s3"
