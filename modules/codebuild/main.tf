@@ -2,9 +2,13 @@ resource "aws_codebuild_project" "codebuild_project" {
   name          = "MyCodeBuildProject"
   service_role  = var.build_role_arn
 
-  artifacts {
-    type = "S3"
-    location = var.artifact_bucket_name
+#  artifacts {
+#    type = "S3"
+#    location = var.artifact_bucket_name
+#  }
+
+   artifacts {
+    type = "CODEPIPELINE"
   }
 
   environment {
