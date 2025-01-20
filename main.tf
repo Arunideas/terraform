@@ -1,7 +1,7 @@
 provider "aws" {
   region = "ap-south-1"
 
-    default_tags {
+  default_tags {
     tags = {
       Environment = "Testing"
       Owner       = "arun"
