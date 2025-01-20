@@ -16,9 +16,15 @@ resource "aws_iam_role" "codebuild_role" {
 }
 
 resource "aws_iam_role_policy_attachment" "codebuild_policy" {
-  role       = aws_iam_role.codebuild_role.name
+  role       = aws_iam_role.codepipeline_role.name
   policy_arn = "arn:aws:iam::aws:policy/AWSCodeBuildDeveloperAccess"
 }
+
+resource "aws_iam_role_policy_attachment" "codePipeline_policy" {
+  role       = aws_iam_role.codebuild_role.name
+  policy_arn = "arn:aws:iam::aws:policy/AWSCodePipeline_FullAccess"
+}
+
 
 resource "aws_iam_role" "codepipeline_role" {
   name = "CodePipelineRole"
@@ -47,7 +53,7 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
       {
         Effect   = "Allow"
         Action   = "s3:*"
-        Resource = "${var.s3_bucket_arn}/*"
+        Resource = "*"
       },
       {
         Effect   = "Allow"
