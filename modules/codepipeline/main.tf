@@ -43,6 +43,22 @@ resource "aws_codepipeline" "codepipeline" {
     }
   }
 
+  stage {
+    name = "Deploy"
 
+    action {
+      name       = "Deploy"
+      category   = "Deploy"
+      owner      = "AWS"
+      provider   = "S3"
+      version    = "1"
+      input_artifacts = ["BuildOutput"]
+
+      configuration = {
+        BucketName = var.artifact_bucket_name
+        Extract    = "true"
+      }
+    }
+  }
 }
 
