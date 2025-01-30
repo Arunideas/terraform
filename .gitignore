@@ -1,4 +1,3 @@
 #ignore environment-specific config files
 dev.config.tfvars
 lab.config.tfvars
-prd.config.tfvars
