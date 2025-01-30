@@ -38,7 +38,7 @@ module "codebuild" {
   buildspec             = file("buildspec.yml") # Path to the buildspec file
 }
 
-module "codepipeline" {
+module "codepipeline1" {
   source                = "./modules/codepipeline"
   pipeline_role_arn     = module.iam.codepipeline_role_arn
   artifact_bucket_name  = module.s3.bucket_name
